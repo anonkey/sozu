@@ -472,6 +472,7 @@ impl SocketHandler for FrontRustls {
 }
 
 pub fn server_bind(addr: SocketAddr) -> Result<TcpListener, ServerBindError> {
+    error!("Binding to {:?}", addr);
     let sock = Socket::new(Domain::for_address(addr), Type::STREAM, Some(Protocol::TCP))
         .map_err(ServerBindError::SocketCreationError)?;
 
